@@ -31,15 +31,33 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="manage.py" />
+    <Compile Include="rango\admin.py" />
+    <Compile Include="rango\apps.py" />
+    <Compile Include="rango\migrations\__init__.py" />
+    <Compile Include="rango\models.py" />
+    <Compile Include="rango\tests.py" />
+    <Compile Include="rango\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="rango\views.py" />
+    <Compile Include="rango\__init__.py" />
     <Compile Include="tango_with_django_project\__init__.py" />
     <Compile Include="tango_with_django_project\settings.py" />
     <Compile Include="tango_with_django_project\urls.py" />
     <Compile Include="tango_with_django_project\wsgi.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="rango\static\images\rango.JPG" />
+    <Content Include="rango\templates\about.html" />
+    <Content Include="rango\templates\index.html" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="rango\" />
+    <Folder Include="rango\migrations\" />
+    <Folder Include="rango\static\" />
+    <Folder Include="rango\static\images\" />
+    <Folder Include="rango\templates\" />
     <Folder Include="tango_with_django_project\" />
   </ItemGroup>
   <ItemGroup>

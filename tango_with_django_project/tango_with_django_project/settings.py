@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rango',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -54,10 +55,12 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = 'tango_with_django_project.urls'
 
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'rango/templates')
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,6 +123,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
+RANGO_STATIC_DIR = os.path.join(BASE_DIR, 'rango/static')
+STATICFILES_DIRS = [RANGO_STATIC_DIR,]
+
 STATIC_URL = '/static/'
 
 STATIC_ROOT = posixpath.join(*(BASE_DIR.split(os.path.sep) + ['static']))
+
+
