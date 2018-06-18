@@ -31,6 +31,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="manage.py" />
+    <Compile Include="populate_rango.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="rango\admin.py" />
     <Compile Include="rango\apps.py" />
     <Compile Include="rango\migrations\__init__.py" />
