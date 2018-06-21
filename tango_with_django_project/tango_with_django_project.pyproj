@@ -36,6 +36,9 @@
     </Compile>
     <Compile Include="rango\admin.py" />
     <Compile Include="rango\apps.py" />
+    <Compile Include="rango\forms.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="rango\migrations\__init__.py" />
     <Compile Include="rango\models.py" />
     <Compile Include="rango\urls.py">
@@ -54,6 +57,8 @@
   <ItemGroup>
     <Content Include="rango\static\images\rango.JPG" />
     <Content Include="rango\templates\about.html" />
+    <Content Include="rango\templates\add_category.html" />
+    <Content Include="rango\templates\add_page.html" />
     <Content Include="rango\templates\category.html" />
     <Content Include="rango\templates\index.html" />
     <Content Include="requirements.txt" />
