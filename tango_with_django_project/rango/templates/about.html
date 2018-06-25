@@ -1,21 +1,19 @@
-﻿<!DOCTYPE html>
+﻿{% extends 'base.html' %}
 {% load staticfiles %}
-<html>
 
-    <head>
-        <title>Rango</title>
-    </head>
+{% block title_block %}
+    About
+{% endblock %}
 
-    <body>
+{% block body_block %}
         <h1>Rango says...</h1>
         <div>
             This tutorial has been brought to you by the letter R.<br/>
             <strong>{{ boldmessage }}</strong><br/>
         </div>
         <div>
-            <a href="/rango/index">Index</a><br/>
             <img src="{% static 'images/notepad12.gif ' %}"
                 alt = "Picture of a Notepad"/>
         </div>
-    </body>
-</html>
+
+{% endblock %}

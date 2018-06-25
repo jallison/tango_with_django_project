@@ -41,6 +41,12 @@
     </Compile>
     <Compile Include="rango\migrations\__init__.py" />
     <Compile Include="rango\models.py" />
+    <Compile Include="rango\templatetags\rango_template_tags.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="rango\templatetags\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="rango\urls.py">
       <SubType>Code</SubType>
     </Compile>
@@ -59,13 +65,16 @@
     <Content Include="rango\templates\about.html" />
     <Content Include="rango\templates\add_category.html" />
     <Content Include="rango\templates\add_page.html" />
+    <Content Include="rango\templates\base.html" />
     <Content Include="rango\templates\category.html" />
+    <Content Include="rango\templates\cats.html" />
     <Content Include="rango\templates\index.html" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="rango\" />
     <Folder Include="rango\migrations\" />
+    <Folder Include="rango\templatetags\" />
     <Folder Include="rango\static\" />
     <Folder Include="rango\static\images\" />
     <Folder Include="rango\templates\" />
