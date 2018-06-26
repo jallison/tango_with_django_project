@@ -69,6 +69,8 @@
     <Content Include="rango\templates\category.html" />
     <Content Include="rango\templates\cats.html" />
     <Content Include="rango\templates\index.html" />
+    <Content Include="rango\templates\login.html" />
+    <Content Include="rango\templates\register.html" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
