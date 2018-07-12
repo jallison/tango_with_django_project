@@ -5,6 +5,7 @@ from rango.forms import CategoryForm, PageForm, UserProfileForm, UserForm
 from django.contrib.auth import authenticate, login, logout
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
+from datetime import datetime
 
 
 # Create your views here.
@@ -14,16 +15,28 @@ def index(request):
     # Retrieve the top 5 only - or all if less than 5
     # Place the list in our context_dict dictinary
     # that will be passed to the template engine.
-    
+
     category_list = Category.objects.order_by('-likes')[:5]
     pages_list = Page.objects.order_by('-views')[:5]
     context_dict = {'categories': category_list, 'pages':pages_list}
 
-    # Render the response and send it back!
-    return render(request, 'index.html', context_dict)
+    # Call function to handle the cookies
+    visitor_cookie_handler(request)
+    context_dict['visits'] = request.session['visits']
+
+    # Obtain our Response object early so we cna add cookie information.
+    response = render(request, 'index.html', context=context_dict)
+
+    # Return response back to the user, updating any cookies that need changed.
+    return response
 
 def about(request):
+
+
     context_dict = {'boldmessage': "This is part of the tutorial!"}
+    # Call function to handle the cookies
+    visitor_cookie_handler(request)
+    context_dict['visits'] = request.session['visits']
     return render(request, 'about.html', context=context_dict)
 
 def show_category(request, category_name_slug):
@@ -199,7 +212,7 @@ def user_login(request):
                 return HttpResponseRedirect(reverse('index')) 
             else:
                 # An inactive account was used - no loggin in!
-                return HttpResponse("Your Rango accoutn is disabled.")
+                return HttpResponse("Your Rango account is disabled.")
         else:
             # Bad login details were provided. So we can't log the user in.
             print("Invalid login details: {0}, {1}".format(username, password))
@@ -221,3 +234,26 @@ def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('index'))
 
+def visitor_cookie_handler(request):
+    visits = int(get_server_side_cookie(request, 'visits', '1'))
+    last_visit_cookie = get_server_side_cookie(request, 'last_visit', str(datetime.now()))
+
+    last_visit_time = datetime.strptime(last_visit_cookie[:-7], '%Y-%m-%d %H:%M:%S')
+
+    # If it's been more than a day since the last visist...
+    if (datetime.now() - last_visit_time).days > 0:
+        visits = visits + 1
+        # update the last visist cookie now that we have updated the count
+        request.session['last_visit'] = str(datetime.now())
+    else:
+        # set the last visist cookie
+        request.session['last_visit'] = last_visit_cookie
+    # update/set the visits cookie
+
+    request.session['visits'] = visits
+
+def get_server_side_cookie(request, cookie, default_val=None):
+    val = request.session.get(cookie)
+    if not val:
+        val = default_val
+    return val
