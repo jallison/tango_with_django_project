@@ -71,11 +71,18 @@
     <Content Include="rango\templates\index.html" />
     <Content Include="rango\templates\login.html" />
     <Content Include="rango\templates\register.html" />
+    <Content Include="rango\templates\registration\login.html" />
+    <Content Include="rango\templates\registration\logout.html" />
+    <Content Include="rango\templates\registration\password_change_done.html" />
+    <Content Include="rango\templates\registration\password_change_form.html" />
+    <Content Include="rango\templates\registration\registration_complete.html" />
+    <Content Include="rango\templates\registration\registration_form.html" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="rango\" />
     <Folder Include="rango\migrations\" />
+    <Folder Include="rango\templates\registration\" />
     <Folder Include="rango\templatetags\" />
     <Folder Include="rango\static\" />
     <Folder Include="rango\static\images\" />
